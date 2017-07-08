@@ -2,25 +2,23 @@
 
 print("\r\nThis Program will calculate the volume of a sphere\r\n")
 
-radius = input("Enter the radius of the sphere: ")
-# While loop that breaks with a Value Error. Ensures we enter in only a valid number)
+# Needed to wrap the input itself in the while loop. Also needed the input to remain the same, instead of putting
+# additional inputs within the response (bring it back to the beginning to try again)
+
 while True:
     try:
+        radius = input("Enter the radius of the sphere: ")
         radius = float(radius)
         if radius <= 0:
-            radius = input("This number was not greater than 0. Please enter a number greater than zero: ")
-        else:
-            break
-    except ValueError:  # Need to fix this so that I get the proper while loop
-        radius = input("That was an invalid entry. Please enter a number: ")  # issue:If number not entered, this breaks
-        while ValueError:
-            radius = input(
-                "That was an invalid entry. Please enter a number: ")  # issue:If number not entered, this breaks
-        else:
-            pass
-        radius = float(radius)
-        if radius <= 0:
-            radius = input("This number was not greater than 0. Please enter a number greater than zero: ")
+            print("This number was not greater than 0. Please enter a number greater than zero\r\n")
+            continue
+
+    except ValueError:
+        print("That was an invalid entry. Please enter a number\r\n")
+        continue
+
+    else:
+        break
 
 area = (4 * 3.14) * (radius ** 3) / 3
 area = round(area, 2)

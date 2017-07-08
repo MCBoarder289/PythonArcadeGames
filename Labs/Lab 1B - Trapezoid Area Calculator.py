@@ -3,33 +3,50 @@
 
 print("\r\nThis Program will calculate the area of a trapezoid\r\n")
 
-height = input("Enter the height of the trapezoid: ")
-# While loop that breaks with a Value Error. Ensures we enter in only a valid number)
+# Get the height input
 while True:
     try:
+        height = input("Enter the height of the trapezoid: ")
         height = float(height)
-        break
+        if height <= 0:
+            print("This number was not greater than 0. Please enter a number greater than zero\r\n")
+            continue
     except ValueError:
-        height = input("That was an invalid entry. Please enter a number: ")
-        height = float(height)
+        print("That was an invalid entry. Please enter a number\r\n")
+        continue
 
-bottomLength = input("Enter the length of the bottom base: ")
+    else:
+        break
+
+# Get the bottomLength input
 while True:
     try:
+        bottomLength = input("Enter the length of the bottom base: ")
         bottomLength = float(bottomLength)
-        break
+        if bottomLength <= 0:
+            print("This number was not greater than 0. Please enter a number greater than zero\r\n")
+            continue
     except ValueError:
-        bottomLength = input("That was an invalid entry. Please enter a number: ")
-        bottomLength = float(bottomLength)
+        print("That was an invalid entry. Please enter a number\r\n")
+        continue
 
-topLength = input("Enter the length of the top base: ")
+    else:
+        break
+
+# Get the topLength input
 while True:
     try:
+        topLength = input("Enter the length of the top of the trapezoid: ")
         topLength = float(topLength)
-        break
+        if topLength <= 0:
+            print("This number was not greater than 0. Please enter a number greater than zero\r\n")
+            continue
     except ValueError:
-        topLength = input("That was an invalid entry. Please enter a number: ")
-        topLength = float(topLength)
+        print("That was an invalid entry. Please enter a number\r\n")
+        continue
+
+    else:
+        break
 
 area = (1/2) * (bottomLength + topLength) * height
 area = round(area, 2)
