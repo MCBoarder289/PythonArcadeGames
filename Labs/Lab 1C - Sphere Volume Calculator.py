@@ -11,8 +11,13 @@ while True:
             radius = input("This number was not greater than 0. Please enter a number greater than zero: ")
         else:
             break
-    except ValueError:
+    except ValueError:  # Need to fix this so that I get the proper while loop
         radius = input("That was an invalid entry. Please enter a number: ")  # issue:If number not entered, this breaks
+        while ValueError:
+            radius = input(
+                "That was an invalid entry. Please enter a number: ")  # issue:If number not entered, this breaks
+        else:
+            pass
         radius = float(radius)
         if radius <= 0:
             radius = input("This number was not greater than 0. Please enter a number greater than zero: ")
