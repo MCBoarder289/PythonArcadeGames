@@ -152,7 +152,7 @@ computer_choice = 0
 while player_choice == computer_choice:
 
     try:  # Error Capturing if they enter in words instead of numbers
-        player_choice = input("Choose your number wisely.\r\n 1. Rock \r 2. Paper \r 3. Scissors \r\n")
+        player_choice = input("Choose your number wisely.\r\n 1. Rock \n 2. Paper \n 3. Scissors \r\n")
         player_choice = int(player_choice)
 
         if player_choice == 1:  # Converting number choices to words
