@@ -17,7 +17,7 @@ while player_choice == computer_choice:
     try:  # Error Capturing if they enter in words instead of numbers
         print("The Current score is:", "\r\nYou:", player_score, "\r\nComputer:", computer_score, "\r\n")
 
-        player_choice = input("Choose your number wisely.\r\n 1. Rock \n 2. Paper \n 3. Scissors \r\n")
+        player_choice = input("Choose your number wisely.\r\n 1. Rock \n 2. Paper \n 3. Scissors \r\nYour Choice?:")
         player_choice = int(player_choice)
 
         if player_choice == 1:  # Converting number choices to words
