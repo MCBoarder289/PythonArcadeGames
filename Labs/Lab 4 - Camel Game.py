@@ -16,7 +16,7 @@ done = False
 total_ly_traveled = 0
 crew_fatigue = 0
 ship_fuel = 100
-enemy_distance = -50
+enemy_distance = -80
 fuel_cells = 5
 
 # print(str(ship_fuel)+"%") -- A way to print a percentage
@@ -103,13 +103,15 @@ while not done:
         ly_traveled = random.randrange(10, 21)
         total_ly_traveled += ly_traveled
         crew_fatigue += 1
-        ship_fuel -= random.randrange(10, 16)
-        enemy_distance += random.randrange(5, 10)
-        print("\r\nWith the extra boost from the hyperdrive, you travelled", ly_traveled, "Light Years.\r\n")
+        ship_fuel -= random.randrange(15, 21)
+        enemy_distance += random.randrange(1, 7)
+        print("\r\nWith the extra boost from the hyperdrive, you travelled", ly_traveled, "Light Years.")
+        print("The enemy needed to travel slower to relocate your position\r\n")
         salvage_event = random.randrange(1, 21)
         if salvage_event == 1:
             fuel_cells = 5
-            print("\r\nYou have come across a derelict ship. Your emergency fuel reserves are replenished\r\n")
+            print("\r\nYou have come across a derelict ship. Your emergency fuel reserves are replenished,")
+            print("and your crew takes a rest.\n")
 
     elif user_choice.upper() == "A":
         ly_traveled = random.randrange(5, 13)
