@@ -27,14 +27,6 @@ choices = ["A", "B", "C", "D", "E", "Q"]
 # Main Loop in Game
 while not done:
 
-    # Print the Options
-    print("A. Travel normal speed")
-    print("B. Travel with hyperdrive boost")
-    print("C. Rest your crew")
-    print("D. Refuel your ship")
-    print("E. Perform Status Check")
-    print("Q. Quit\r\n")
-
     # Warning Messages / End Game Scenarios
     if not done and ship_fuel <= 0:
         print("\r\nYou ran out of fuel... your fate is sealed, and the enemy is victorious...\r\n")
@@ -71,6 +63,14 @@ while not done:
     if not done and crew_fatigue >= 5:
         print("\r\nYour crew is fatigued, and may become prone to navigational mistakes\r\n")
 
+    # Print the Options
+    print("A. Travel normal speed")
+    print("B. Travel with hyperdrive boost")
+    print("C. Rest your crew")
+    print("D. Refuel your ship")
+    print("E. Perform Status Check")
+    print("Q. Quit\r\n")
+
     # Request input
     user_choice = input("Your command?: ")
     try:  # Error Handling
@@ -98,6 +98,7 @@ while not done:
     elif user_choice.upper() == "C":
         crew_fatigue = 0
         enemy_ly_traveled += random.randrange(7, 15)
+        enemy_distance = total_ly_traveled - enemy_ly_traveled
         print("\r\nAlthough difficult to get some sleep, the crew takes a much needed rest.")
         print("They are now ready to take orders and continue the journey.\r\n")
 
@@ -107,6 +108,7 @@ while not done:
         crew_fatigue += 1
         ship_fuel -= random.randrange(15, 21)
         enemy_ly_traveled += random.randrange(1, 7)
+        enemy_distance = total_ly_traveled - enemy_ly_traveled
         print("\r\nWith the extra boost from the hyperdrive, you travelled", ly_traveled, "Light Years.")
         print("The enemy needed to travel slower to relocate your position\r\n")
         salvage_event = random.randrange(1, 21)
@@ -121,6 +123,7 @@ while not done:
         crew_fatigue += 1
         ship_fuel -= 10
         enemy_ly_traveled += random.randrange(7, 15)
+        enemy_distance = total_ly_traveled - enemy_ly_traveled
         print("\r\nYou make a quick jump, and travelled", ly_traveled, "Light Years.\r\n")
         salvage_event = random.randrange(1, 21)
         if salvage_event == 1:
