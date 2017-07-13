@@ -102,10 +102,11 @@ while not done:
         print("\r\nAlthough difficult to get some sleep, the crew takes a much needed rest.")
         print("They are now ready to take orders and continue the journey.\r\n")
 
+    # Hyperdrive Travel Option
     elif user_choice.upper() == "B":
         ly_traveled = random.randrange(10, 21)
         total_ly_traveled += ly_traveled
-        crew_fatigue += 1
+        crew_fatigue += random.randrange(1, 4)
         ship_fuel -= random.randrange(15, 21)
         enemy_ly_traveled += random.randrange(1, 7)
         enemy_distance = total_ly_traveled - enemy_ly_traveled
@@ -117,6 +118,7 @@ while not done:
             print("\r\nYou have come across a derelict ship. Your emergency fuel reserves are replenished,")
             print("and your crew takes a rest.\n")
 
+    # Normal Travel Option
     elif user_choice.upper() == "A":
         ly_traveled = random.randrange(5, 13)
         total_ly_traveled += ly_traveled
@@ -130,6 +132,7 @@ while not done:
             fuel_cells = 5
             print("\r\nYou have come across a derelict ship. Your emergency fuel reserves are replenished\r\n")
 
+    # Refuel Option
     elif user_choice.upper() == "D":
         if fuel_cells > 0:
             fuel_cells -= 1
