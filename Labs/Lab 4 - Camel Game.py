@@ -16,7 +16,7 @@ done = False
 total_ly_traveled = 0
 crew_fatigue = 0
 ship_fuel = 100
-enemy_ly_traveled = -50
+enemy_ly_traveled = -20
 fuel_cells = 5
 enemy_distance = total_ly_traveled - enemy_ly_traveled
 
