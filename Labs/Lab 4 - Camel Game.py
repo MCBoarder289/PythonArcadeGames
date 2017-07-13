@@ -16,8 +16,9 @@ done = False
 total_ly_traveled = 0
 crew_fatigue = 0
 ship_fuel = 100
-enemy_distance = -80
+enemy_ly_traveled = -50
 fuel_cells = 5
+enemy_distance = total_ly_traveled - enemy_ly_traveled
 
 # print(str(ship_fuel)+"%") -- A way to print a percentage
 
@@ -25,6 +26,7 @@ choices = ["A", "B", "C", "D", "E", "Q"]
 
 # Main Loop in Game
 while not done:
+
     # Print the Options
     print("A. Travel normal speed")
     print("B. Travel with hyperdrive boost")
@@ -45,7 +47,7 @@ while not done:
         done = True
         break
 
-    if not done and enemy_distance >= 0:
+    if not done and enemy_distance <= 0:
         print("\r\nThe enemy fleet has reached your position. Your defenses can't hold up against the attack")
         print("Your ship perishes, as does your home world without knowledge of the stolen secret plans...")
         done = True
@@ -57,7 +59,7 @@ while not done:
         done = True
         break
 
-    if not done and enemy_distance >= -15:
+    if not done and enemy_distance <= 15:
         print("\---------WARNING: Enemy Fleet is gaining on your position---------")
 
     if not done and ship_fuel < 20:
@@ -95,7 +97,7 @@ while not done:
 
     elif user_choice.upper() == "C":
         crew_fatigue = 0
-        enemy_distance += random.randrange(7, 15)
+        enemy_ly_traveled += random.randrange(7, 15)
         print("\r\nAlthough difficult to get some sleep, the crew takes a much needed rest.")
         print("They are now ready to take orders and continue the journey.\r\n")
 
@@ -104,7 +106,7 @@ while not done:
         total_ly_traveled += ly_traveled
         crew_fatigue += 1
         ship_fuel -= random.randrange(15, 21)
-        enemy_distance += random.randrange(1, 7)
+        enemy_ly_traveled += random.randrange(1, 7)
         print("\r\nWith the extra boost from the hyperdrive, you travelled", ly_traveled, "Light Years.")
         print("The enemy needed to travel slower to relocate your position\r\n")
         salvage_event = random.randrange(1, 21)
@@ -118,7 +120,7 @@ while not done:
         total_ly_traveled += ly_traveled
         crew_fatigue += 1
         ship_fuel -= 10
-        enemy_distance += random.randrange(7, 15)
+        enemy_ly_traveled += random.randrange(7, 15)
         print("\r\nYou make a quick jump, and travelled", ly_traveled, "Light Years.\r\n")
         salvage_event = random.randrange(1, 21)
         if salvage_event == 1:
