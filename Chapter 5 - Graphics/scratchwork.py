@@ -1,6 +1,7 @@
 
 # Libraries
 import pygame
+import math
 
 # Initialize the game engine
 pygame.init()
@@ -54,8 +55,57 @@ while not done:
 
     # ALL CODE TO DRAW SHOULD GO BELOW THIS COMMENT
     screen.fill(WHITE)
-    pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 5)
-    pygame.draw.line(screen, RED, [50, 0], [50, 50], 2)
+    # radius = 100
+    # origin_x = 0
+    # origin_y = 100
+
+    """
+    pygame.draw.line(screen, GREEN, [0, 0], [100, 100], 1)
+    pygame.draw.line(screen, GREEN, [200, 0], [100, 100], 1)
+    pygame.draw.line(screen, GREEN, [100, 100], [200, 200], 1)
+    pygame.draw.line(screen, GREEN, [0, 200], [100, 100], 1)
+    pygame.draw.line(screen, GREEN, [100, 0], [100, 100], 1)
+    pygame.draw.line(screen, GREEN, [100, 100], [100, 200], 1)
+    pygame.draw.line(screen, GREEN, [0, 100], [100, 100], 1)
+    pygame.draw.line(screen, GREEN, [200, 100], [100, 100], 1)
+    # pygame.draw.line(screen, GREEN, [200, 0], [100, 100], 5)
+    """
+
+    # Draw on the screen several lines from (0, 10) to (100, 110)
+    # 5 pixels wide using a while loop
+    y_offset = 0
+    while y_offset < 100:
+        pygame.draw.line(screen, RED, [0, 10 + y_offset], [100, 110 + y_offset], 5)
+        y_offset = y_offset + 10
+
+    # Draw on the screen several lines from (0,10) to (100,110)
+    # 5 pixels wide using a for loop -- same as above but more concise
+    for y_offset in range(0, 100, 10):
+        pygame.draw.line(screen, RED, [0, 10 + y_offset], [100, 110 + y_offset], 5)
+
+    # For this code, make sure to have a line that says
+    # "import math" at the top of your program. Otherwise
+    # it won't know what math.sin is.
+
+    for i in range(200):
+        radians_x = i / 20
+        radians_y = i / 6
+
+        x = int(75 * math.sin(radians_x)) + 200
+        y = int(75 * math.cos(radians_y)) + 200
+
+        pygame.draw.line(screen, BLACK, [x, y], [x + 5, y], 5)
+
+    # Draw some X's
+    for x_offset in range(30, 300, 30):
+        pygame.draw.line(screen, BLACK, [x_offset, 100], [x_offset - 10, 90], 2)
+        pygame.draw.line(screen, BLACK, [x_offset, 90], [x_offset - 10, 100], 2)
+
+    # Draw Rectangles
+    pygame.draw.rect(screen, GREEN, [350, 250, 100, 50], 1)
+    pygame.draw.ellipse(screen, GREEN, [350, 250, 100, 50], 0)
+
+
     # ALL CODE TO DRAW SHOULD BE ABOVE THIS COMMENT
     pygame.display.flip()
     # Limit to 20 frames per second
