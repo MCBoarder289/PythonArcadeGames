@@ -33,7 +33,7 @@ clock = pygame.time.Clock()  # Control for how fast game runs
 while not done:
     # ALL EVENT PROCESSING SHOULD GO BELOW THIS COMMENT
     for event in pygame.event.get():  # User did something
-        if event.type == pygame.quit():  # If user clicked close
+        if event.type == pygame.QUIT:  # If user clicked close note, this is not pygame.quit() which is a function
             done = True  # Flag that we are done, so we exit this loop
 
     # ALL EVENT PROCESSING SHOULD GO BELOW THIS COMMENT
@@ -48,6 +48,8 @@ while not done:
 
     # Limit to 20 frames per second
     clock.tick(20)
+
+pygame.quit()
 
 
 
