@@ -123,7 +123,7 @@ while not done:
         ly_traveled = random.randrange(5, 13)
         total_ly_traveled += ly_traveled
         crew_fatigue += 1
-        ship_fuel -= 10
+        ship_fuel -= random.randrange(5, 11)
         enemy_ly_traveled += random.randrange(7, 15)
         enemy_distance = total_ly_traveled - enemy_ly_traveled
         print("\r\nYou make a quick jump, and travelled", ly_traveled, "Light Years.\r\n")
