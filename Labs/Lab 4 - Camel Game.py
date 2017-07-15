@@ -52,7 +52,7 @@ while not done:
         break
 
     if not done and enemy_distance <= 15:
-        print("\---------WARNING: Enemy Fleet is gaining on your position---------")
+        print("---------WARNING: Enemy Fleet is gaining on your position---------")
 
     if not done and ship_fuel < 20:
         print("---------WARNING: Ship's remaining fuel is below 20%---------")
@@ -97,7 +97,7 @@ while not done:
 
     elif user_choice.upper() == "C":
         crew_fatigue = 0
-        enemy_ly_traveled += random.randrange(7, 15)
+        enemy_ly_traveled += random.randrange(10, 21)
         enemy_distance = total_ly_traveled - enemy_ly_traveled
         print("\r\nAlthough difficult to get some sleep, the crew takes a much needed rest.")
         print("They are now ready to take orders and continue the journey.\r\n")
@@ -136,7 +136,7 @@ while not done:
     elif user_choice.upper() == "D":
         if fuel_cells > 0:
             fuel_cells -= 1
-            ship_fuel += 10
+            ship_fuel += 15
         else:
             print("\r\nYou have no more emergency fuel remaining...\r\n")
 
