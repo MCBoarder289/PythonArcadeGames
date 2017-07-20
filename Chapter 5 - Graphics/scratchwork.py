@@ -12,6 +12,11 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+
+# SET PI
+PI = 3.141592653
+
 
 # Set the width and height of the screen
 
@@ -101,10 +106,19 @@ while not done:
         pygame.draw.line(screen, BLACK, [x_offset, 100], [x_offset - 10, 90], 2)
         pygame.draw.line(screen, BLACK, [x_offset, 90], [x_offset - 10, 100], 2)
 
-    # Draw Rectangles
+    # Draw Rectangles/ Ellipses
     pygame.draw.rect(screen, GREEN, [350, 250, 100, 50], 1)
     pygame.draw.ellipse(screen, GREEN, [350, 250, 100, 50], 0)
 
+    # Draw an arc as part of an ellipse. Use radians to determine what
+    # angle to draw.
+    pygame.draw.arc(screen, GREEN, [100, 100, 250, 200], PI / 2, PI, 1)
+    pygame.draw.arc(screen, BLACK, [100, 100, 250, 200], 0, PI / 2, 1)
+    pygame.draw.arc(screen, RED, [100, 100, 250, 200], 3 * PI / 2, 2 * PI, 1)
+    pygame.draw.arc(screen, BLUE, [100, 100, 250, 200], PI, 3 * PI / 2, 1)
+
+    # This draws a triangle using the polygon command
+    pygame.draw.polygon(screen, BLACK, [[500, 100], [400, 200], [600, 200]], 5)
 
     # ALL CODE TO DRAW SHOULD BE ABOVE THIS COMMENT
     pygame.display.flip()
