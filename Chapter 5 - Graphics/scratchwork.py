@@ -17,6 +17,10 @@ BLUE = (0, 0, 255)
 # SET PI
 PI = 3.141592653
 
+# Define font for text
+font = pygame.font.Font(None, 25)  # can do pygame.font.Font("C:/Windows/Fonts/SCHLBKB.ttf", 25)
+score = 100
+
 
 # Set the width and height of the screen
 
@@ -76,6 +80,7 @@ while not done:
     # pygame.draw.line(screen, GREEN, [200, 0], [100, 100], 5)
     """
 
+    # Drawing Diagonal lines on left side of screen -------------------------------
     # Draw on the screen several lines from (0, 10) to (100, 110)
     # 5 pixels wide using a while loop
     y_offset = 0
@@ -88,6 +93,7 @@ while not done:
     for y_offset in range(0, 100, 10):
         pygame.draw.line(screen, RED, [0, 10 + y_offset], [100, 110 + y_offset], 5)
 
+    # Drawing crazy lines with sin and cosine -------------------------------
     # For this code, make sure to have a line that says
     # "import math" at the top of your program. Otherwise
     # it won't know what math.sin is.
@@ -101,15 +107,16 @@ while not done:
 
         pygame.draw.line(screen, BLACK, [x, y], [x + 5, y], 5)
 
-    # Draw some X's
+    # Draw some X's --------------------------------
     for x_offset in range(30, 300, 30):
         pygame.draw.line(screen, BLACK, [x_offset, 100], [x_offset - 10, 90], 2)
         pygame.draw.line(screen, BLACK, [x_offset, 90], [x_offset - 10, 100], 2)
 
-    # Draw Rectangles/ Ellipses
+    # Draw Rectangles/ Ellipses -------------------------------
     pygame.draw.rect(screen, GREEN, [350, 250, 100, 50], 1)
     pygame.draw.ellipse(screen, GREEN, [350, 250, 100, 50], 0)
 
+    # Drawing Arc --------------------------------
     # Draw an arc as part of an ellipse. Use radians to determine what
     # angle to draw.
     pygame.draw.arc(screen, GREEN, [100, 100, 250, 200], PI / 2, PI, 1)
@@ -117,8 +124,24 @@ while not done:
     pygame.draw.arc(screen, RED, [100, 100, 250, 200], 3 * PI / 2, 2 * PI, 1)
     pygame.draw.arc(screen, BLUE, [100, 100, 250, 200], PI, 3 * PI / 2, 1)
 
+    # Drawing Triangle -------------------------------
     # This draws a triangle using the polygon command
-    pygame.draw.polygon(screen, BLACK, [[500, 100], [400, 200], [600, 200]], 5)
+    pygame.draw.polygon(screen, BLACK, [[500, 100], [400, 200], [600, 200]], 0)
+
+    # Drawing Text -------------------------------
+    # Select the font to use, size, bold, italics
+
+    # font = pygame.font.SysFont('Calibri', 25, True, False)
+
+    # Render the text. "True" means anti-aliased text.
+    # Black is the color. The variable BLACK was defined
+    # above as a list of [0, 0, 0]
+    # Note: This line creates an image of the letters,
+    # but does not put it on the screen yet.
+    text = font.render("Score: " + str(score), True, BLACK)
+
+    # Put the image of the text on the screen at 250x250
+    screen.blit(text, [250, 300])
 
     # ALL CODE TO DRAW SHOULD BE ABOVE THIS COMMENT
     pygame.display.flip()
