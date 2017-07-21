@@ -47,7 +47,6 @@ cloud2y = random.randrange(10, cloud_ylim)
 cloud2width = random.randrange(100, cloud_widthlim)
 cloud2height = random.randrange(50, cloud_heightlim)
 
-
 pygame.display.set_caption("Ski Scene - Ch. 5 Lab")
 
 # Set Frame Rate
@@ -114,8 +113,136 @@ while not done:
         x_offset += 20
         y_offset += 25
 
-    # pygame.draw.ellipse(screen, CLOUDS, [cloud2x, cloud2y, cloud2width, cloud2height], 0)
+    # Draw Lodge -------------------------
+    pygame.draw.rect(screen, LODGE_BASE, [375, 210, 50, 30], 0)
+    pygame.draw.polygon(screen, BLACK, [(375, 210), (400, 195), (425, 210)], 0)
 
+    # Draw Lift Lines --------------------
+    pygame.draw.polygon(screen, BLACK, [(430, 600), (445, 210), (460, 210), (450, 600)], 2)
+    # Draw Lift Poles --------------------
+    pygame.draw.line(screen, LODGE_BASE, (445, 210), (460, 210), 4)
+    pygame.draw.line(screen, LODGE_BASE, (452.5, 210), (452.5, 230), 4)
+
+    pygame.draw.line(screen, LODGE_BASE, (441, 350), (456, 350), 4)
+    pygame.draw.line(screen, LODGE_BASE, (448.5, 350), (448.5, 385), 4)
+
+    pygame.draw.line(screen, LODGE_BASE, (436, 500), (451, 500), 4)
+    pygame.draw.line(screen, LODGE_BASE, (443.5, 500), (443.5, 545), 4)
+
+    # Draw Trees -----------------------------
+    # pygame.draw.polygon(screen, GREEN, [(202, 298), (202, 295), (198, 295), (205, 280), (210, 280), (217, 295),
+    #                                    (213, 295), (213, 298)], 0)
+    # pygame.draw.line(screen, LODGE_BASE, (207.5, 298), (207.5, 303), 5)
+
+    x_offset = 0
+    y_offset = 0
+    initial_x = 202
+    initial_y = 298
+    mult = 0.8
+
+    for i in range(2):
+        pygame.draw.polygon(screen, GREEN,
+                            [(initial_x, initial_y), (initial_x, initial_y - (6*mult)), (initial_x - (8*mult), initial_y - (6*mult)),
+                             (initial_x + (6*mult), initial_y - (36*mult)), (initial_x + (16*mult), initial_y - (36*mult)),
+                             (initial_x + (30*mult), initial_y - (6*mult)), (initial_x + (22*mult), initial_y - (6*mult)),
+                             (initial_x + (22*mult), initial_y)], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((initial_x + initial_x + (22*mult)) / 2), initial_y),
+                         (((initial_x + initial_x + (22*mult)) / 2), initial_y + (10*mult)), int(10*mult))
+        x_offset -= 30
+        y_offset -= 30
+        initial_x = initial_x + x_offset
+        initial_y = initial_y + y_offset
+
+    x_offset = 0
+    y_offset = 0
+    initial_x = 120
+    initial_y = 285
+    mult = 0.8
+
+    for i in range(3):
+        pygame.draw.polygon(screen, GREEN,
+                            [(initial_x, initial_y), (initial_x, initial_y - (6 * mult)),
+                             (initial_x - (8 * mult), initial_y - (6 * mult)),
+                             (initial_x + (6 * mult), initial_y - (36 * mult)),
+                             (initial_x + (16 * mult), initial_y - (36 * mult)),
+                             (initial_x + (30 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y)], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((initial_x + initial_x + (22 * mult)) / 2), initial_y),
+                         (((initial_x + initial_x + (22 * mult)) / 2), initial_y + (10 * mult)), int(10 * mult))
+        x_offset -= 30
+        y_offset -= 30
+        initial_x = initial_x + x_offset
+        initial_y = initial_y + y_offset
+        x_offset = 0
+        y_offset = 0
+
+    x_offset = 0
+    y_offset = 0
+    initial_x = 100
+    initial_y = 415
+    mult = 0.8
+
+    for i in range(3):
+        pygame.draw.polygon(screen, GREEN,
+                            [(initial_x, initial_y), (initial_x, initial_y - (6 * mult)),
+                             (initial_x - (8 * mult), initial_y - (6 * mult)),
+                             (initial_x + (6 * mult), initial_y - (36 * mult)),
+                             (initial_x + (16 * mult), initial_y - (36 * mult)),
+                             (initial_x + (30 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y)], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((initial_x + initial_x + (22 * mult)) / 2), initial_y),
+                         (((initial_x + initial_x + (22 * mult)) / 2), initial_y + (10 * mult)), int(10 * mult))
+        x_offset -= 30
+        y_offset += 30
+        initial_x = initial_x + x_offset
+        initial_y = initial_y + y_offset
+
+    x_offset = 0
+    y_offset = 0
+    initial_x = 300
+    initial_y = 500
+    mult = 0.8
+
+    for i in range(3):
+        pygame.draw.polygon(screen, GREEN,
+                            [(initial_x, initial_y), (initial_x, initial_y - (6 * mult)),
+                             (initial_x - (8 * mult), initial_y - (6 * mult)),
+                             (initial_x + (6 * mult), initial_y - (36 * mult)),
+                             (initial_x + (16 * mult), initial_y - (36 * mult)),
+                             (initial_x + (30 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y - (6 * mult)),
+                             (initial_x + (22 * mult), initial_y)], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((initial_x + initial_x + (22 * mult)) / 2), initial_y),
+                         (((initial_x + initial_x + (22 * mult)) / 2), initial_y + (10 * mult)), int(10 * mult))
+        x_offset -= 30
+        y_offset -= 30
+        initial_x = initial_x + x_offset
+        initial_y = initial_y + y_offset
+
+
+
+
+    ''' Multiplication attempt
+    pygame.draw.polygon(screen, GREEN,
+                        [(initial_x, initial_y), (initial_x, initial_y - 6), (initial_x - 8, initial_y - 6),
+                         (initial_x + 6, initial_y - 36), (initial_x + 16, initial_y - 36),
+                         (initial_x + 30, initial_y - 6), (initial_x + 22, initial_y - 6),
+                         (initial_x + 22, initial_y)], 0)
+    pygame.draw.line(screen, LODGE_BASE, (((initial_x + initial_x + 22) / 2), initial_y),
+                     (((initial_x + initial_x + 22) / 2), initial_y + 10), 10)
+
+    '''
+    ''' Original Pattern
+    pygame.draw.polygon(screen, GREEN, [(initial_x, initial_y), (initial_x, initial_y-3), (initial_x - 4, initial_y-3),
+                                        (initial_x+3, initial_y-18), (initial_x+8,  initial_y-18),
+                                        (initial_x+15, initial_y-3), (initial_x+11, initial_y-3),
+                                        (initial_x+11, initial_y)], 0)
+    pygame.draw.line(screen, LODGE_BASE, (((initial_x+initial_x+11)/2), initial_y),
+                                         (((initial_x+initial_x+11)/2), initial_y+5), 5)
+
+    '''
     # ALL CODE TO DRAW SHOULD BE ABOVE THIS COMMENT
     pygame.display.flip()
     # Limit to 20 frames per second
