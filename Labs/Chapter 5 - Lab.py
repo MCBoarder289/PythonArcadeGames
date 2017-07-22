@@ -43,6 +43,27 @@ for i in range(1, 3, 1):
                                                random.randrange(100, cloud_widthlim),
                                                random.randrange(50, cloud_heightlim))
 
+
+# For Random Trees, setting up random initial coordinates
+
+# Trees on the left first....
+
+trees_y_upperlim = 200
+trees_y_lowerlim = 600
+trees_left_xlim = 320
+trees_right_xlim = 480
+
+left_trees = {}
+right_trees = {}
+
+for i in range(25):
+    left_trees["tree{0}".format(i)] = (random.randrange(-5, trees_left_xlim),  # Random x coordinate
+                                       random.randrange(trees_y_upperlim, trees_y_lowerlim))  # Random y coordinate
+
+    right_trees["tree{0}".format(i)] = (random.randrange(trees_right_xlim, 805),
+                                        random.randrange(trees_y_upperlim, trees_y_lowerlim))
+
+
 ''' # Taking out bad practice of numbered variables
 
 cloud1x = random.randrange(10, cloud_xlim)
@@ -150,6 +171,32 @@ while not done:
     #                                    (213, 295), (213, 298)], 0)
     # pygame.draw.line(screen, LODGE_BASE, (207.5, 298), (207.5, 303), 5)
 
+    mult = 0.8
+    for k, v in left_trees.items():
+        pygame.draw.polygon(screen, GREEN,
+                            [(v[0], v[1]), (v[0], v[1] - (6 * mult)),
+                             (v[0] - (8 * mult), v[1] - (6 * mult)),
+                             (v[0] + (6 * mult), v[1] - (36 * mult)),
+                             (v[0] + (16 * mult), v[1] - (36 * mult)),
+                             (v[0] + (30 * mult), v[1] - (6 * mult)),
+                             (v[0] + (22 * mult), v[1] - (6 * mult)),
+                             (v[0] + (22 * mult), v[1])], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((v[0] + v[0] + (22 * mult)) / 2), v[1]),
+                         (((v[0] + v[0] + (22 * mult)) / 2), v[1] + (10 * mult)), int(10 * mult))
+
+    for k, v in right_trees.items():
+        pygame.draw.polygon(screen, GREEN,
+                            [(v[0], v[1]), (v[0], v[1] - (6 * mult)),
+                             (v[0] - (8 * mult), v[1] - (6 * mult)),
+                             (v[0] + (6 * mult), v[1] - (36 * mult)),
+                             (v[0] + (16 * mult), v[1] - (36 * mult)),
+                             (v[0] + (30 * mult), v[1] - (6 * mult)),
+                             (v[0] + (22 * mult), v[1] - (6 * mult)),
+                             (v[0] + (22 * mult), v[1])], 0)
+        pygame.draw.line(screen, LODGE_BASE, (((v[0] + v[0] + (22 * mult)) / 2), v[1]),
+                         (((v[0] + v[0] + (22 * mult)) / 2), v[1] + (10 * mult)), int(10 * mult))
+
+    ''' # Latest Attempt to draw trees, trying to use dictionaries now
     x_offset = 0
     y_offset = 0
     initial_x = 202
@@ -236,11 +283,8 @@ while not done:
         y_offset -= 30
         initial_x = initial_x + x_offset
         initial_y = initial_y + y_offset
-
-
-
-
-    ''' Multiplication attempt
+    '''
+    ''' # Multiplication attempt of drawing trees -----------------
     pygame.draw.polygon(screen, GREEN,
                         [(initial_x, initial_y), (initial_x, initial_y - 6), (initial_x - 8, initial_y - 6),
                          (initial_x + 6, initial_y - 36), (initial_x + 16, initial_y - 36),
@@ -250,7 +294,7 @@ while not done:
                      (((initial_x + initial_x + 22) / 2), initial_y + 10), 10)
 
     '''
-    ''' Original Pattern
+    ''' # Original Pattern of drawing trees -----------------
     pygame.draw.polygon(screen, GREEN, [(initial_x, initial_y), (initial_x, initial_y-3), (initial_x - 4, initial_y-3),
                                         (initial_x+3, initial_y-18), (initial_x+8,  initial_y-18),
                                         (initial_x+15, initial_y-3), (initial_x+11, initial_y-3),
