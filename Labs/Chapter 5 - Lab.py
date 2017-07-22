@@ -30,12 +30,20 @@ WHITE = (255, 255, 255)
 size = (800, 600)
 screen = pygame.display.set_mode(size)
 
-# For Random Clouds, setting up random plots
-# cloud_num = random.randrange(1, 4) -- Will force 2 clouds, can't figure out naming 1...n variable names
+# For Random Clouds, setting up random plots and forcing boundaries
+# cloud_num = random.randrange(1, 4) -- Will force 2 clouds, can't figure out naming 1...n variable names- SOLVED BELOW!
 cloud_xlim = 720
 cloud_ylim = 100
 cloud_heightlim = 100
 cloud_widthlim = 180
+
+cloud_elements = {} # Create a dictionary of cloud coordinates
+for i in range(1, 3, 1):
+    cloud_elements["cloud{0}".format(i)] = (random.randrange(10, cloud_xlim), random.randrange(10, cloud_ylim),
+                                               random.randrange(100, cloud_widthlim),
+                                               random.randrange(50, cloud_heightlim))
+
+''' # Taking out bad practice of numbered variables
 
 cloud1x = random.randrange(10, cloud_xlim)
 cloud1y = random.randrange(10, cloud_ylim)
@@ -46,7 +54,7 @@ cloud2x = random.randrange(10, cloud_xlim)
 cloud2y = random.randrange(10, cloud_ylim)
 cloud2width = random.randrange(100, cloud_widthlim)
 cloud2height = random.randrange(50, cloud_heightlim)
-
+'''
 pygame.display.set_caption("Ski Scene - Ch. 5 Lab")
 
 # Set Frame Rate
@@ -85,17 +93,21 @@ while not done:
     # Draw random clouds ----------------------
     # Need to do the randomizing outside the loop, or else it will continuously change...
     
-    # Cloud 1
+    # Cloud 1  Basically draws an ellipse, and then one to the left and one to the right
     x_offset = 0
     y_offset = 0
     for i in range(2):
-        pygame.draw.ellipse(screen, CLOUDS, [cloud1x + x_offset, cloud1y + y_offset, 70 + x_offset, 70 - y_offset], 0)
+        pygame.draw.ellipse(screen, CLOUDS, [cloud_elements["cloud1"][0] + x_offset,  # cloud_elements index pull
+                                             cloud_elements["cloud1"][1] + y_offset,  # cloud_elements index pull
+                                             70 + x_offset, 70 - y_offset], 0)
         x_offset += 20
         y_offset += 25
     x_offset = 0
     y_offset = 0
     for i in range(2):
-        pygame.draw.ellipse(screen, CLOUDS, [cloud1x + x_offset, cloud1y + y_offset, 70 + x_offset, 70 - y_offset], 0)
+        pygame.draw.ellipse(screen, CLOUDS, [cloud_elements["cloud1"][0] + x_offset,  # cloud_elements index pull
+                                             cloud_elements["cloud1"][1] + y_offset,  # cloud_elements index pull
+                                             70 + x_offset, 70 - y_offset], 0)
         x_offset -= 20
         y_offset += 25
 
@@ -103,13 +115,17 @@ while not done:
     x_offset = 0
     y_offset = 0
     for i in range(2):
-        pygame.draw.ellipse(screen, CLOUDS, [cloud2x + x_offset, cloud2y + y_offset, 70 - x_offset, 70 - y_offset], 0)
+        pygame.draw.ellipse(screen, CLOUDS, [cloud_elements["cloud2"][0] + x_offset,
+                                             cloud_elements["cloud2"][1] + y_offset,
+                                             70 - x_offset, 70 - y_offset], 0)
         x_offset -= 35
         y_offset += 25
     x_offset = 0
     y_offset = 0
     for i in range(2):
-        pygame.draw.ellipse(screen, CLOUDS, [cloud2x + x_offset, cloud2y + y_offset, 70 + x_offset, 70 - y_offset], 0)
+        pygame.draw.ellipse(screen, CLOUDS, [cloud_elements["cloud2"][0] + x_offset,
+                                             cloud_elements["cloud2"][1] + y_offset,
+                                             70 + x_offset, 70 - y_offset], 0)
         x_offset += 20
         y_offset += 25
 
