@@ -37,7 +37,7 @@ cloud_ylim = 100
 cloud_heightlim = 100
 cloud_widthlim = 180
 
-cloud_elements = {} # Create a dictionary of cloud coordinates
+cloud_elements = {}  # Create a dictionary of cloud coordinates
 for i in range(1, 3, 1):
     cloud_elements["cloud{0}".format(i)] = (random.randrange(10, cloud_xlim), random.randrange(10, cloud_ylim),
                                                random.randrange(100, cloud_widthlim),
