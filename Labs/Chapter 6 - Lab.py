@@ -141,3 +141,121 @@ This part of the lab is difficult. Skip to part 4 if you aren't interested in th
 """
 
 
+# Get Input from User
+n = input("Enter a number for your box:")
+n = int(n)  # remember to convert to int, since it will be a string
+
+n = 5
+# Gets the first upper left triangle
+for i in range(1, n+1):
+    for j in range((2*i)-1, (2*n), 2):
+        print(j, end="")
+    print()
+
+n = 5
+
+# Reverses the order of the first triangle
+for i in range(1, n+1):
+    for j in range((2*n)-1, (2*i)-2, -2):
+        print(j, end="")
+    print()
+
+n = 5
+
+# Gets the first upper right Triangle
+for i in range(1, n+1):
+    for k in range(i-1):
+        print(" ", end="")
+    for j in range((2*n)-1, (2*i)-2, -2):
+        print(j, end="")
+    print()
+
+"""
+#####################
+GETS THE FIRST HALF
+#####################
+"""
+
+# Get Input from User
+n = input("Enter a number for your box:")
+n = int(n)  # remember to convert to int, since it will be a string
+
+for i in range(1, n+1):
+    for j in range((2*i)-1, (2*n), 2):
+        print(j, end=" ")
+    for k in range((2*i)-2):
+        print(" ", end=" ")
+    for l in range((2*n)-1, (2*i)-2, -2):
+        print(l, end=" ")
+    print()
+# #############################################
+
+# Working on Bottom Half
+
+# Gets Bottom Right half:
+n = 5
+for i in range(1, n+1):
+    for k in range(((3 * (n - 2)) + (2 * (1 - i))) - 1):
+        print(" ", end="")
+    for j in range((2*n)-1, ((3*(n-2)) + (2*(1-i)))-1, -2):
+        print(j, end=" ")
+    print()
+
+
+# Gets Bottom Left half:
+n = 5
+for i in range(1, n+1):
+    for j in range(((3*(n-2)) + (2*(1-i))), (2*n), 2):
+        print(j, end=" ")
+    for k in range(((3 * (n - 2)) + (2 * (1 - i))) - 1):
+        print(" ", end="")
+    print()
+
+"""
+#####################
+GETS THE SECOND HALF
+#####################
+"""
+n = 5
+for i in range(1, n+1):
+    for j in range(((3*(n-2)) + (2*(1-i))), (2*n), 2):
+        print(j, end=" ")
+    for k in range(((3 * (n - 2)) + (2 * (1 - i))) - 1):
+        print(" ", end=" ")
+    for j in range((2*n)-1, ((3*(n-2)) + (2*(1-i)))-1, -2):
+        print(j, end=" ")
+    print()
+
+
+"""
+##########################################
+COMBINATION OF BOTH HALVES = Final Answer
+##########################################
+"""
+
+# Works for n = 5... doesn't work for 3 or 9...
+
+# Get Input from User
+n = input("Enter a number for your box:")
+n = int(n)  # remember to convert to int, since it will be a string
+
+n = 3
+for i in range(1, n+1):
+    for j in range((2*i)-1, (2*n), 2):
+        print(j, end=" ")
+    for k in range((2*i)-2):
+        print(" ", end=" ")
+    for l in range((2*n)-1, (2*i)-2, -2):
+        print(l, end=" ")
+    print()
+
+
+n = 5
+for i in range(1, n+1):
+    for x in range(((3*(n-2)) + (2*(1-i))), (2*n), 2):
+        print(x, end=" ")
+    for y in range(((3 * (n - 2)) + (2 * (1 - i))) - 1):
+        print(" ", end=" ")
+    for z in range((2*n)-1, ((3*(n-2)) + (2*(1-i)))-1, -2):
+        print(z, end=" ")
+    print()
