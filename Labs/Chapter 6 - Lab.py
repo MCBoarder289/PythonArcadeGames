@@ -239,7 +239,7 @@ COMBINATION OF BOTH HALVES = Final Answer
 n = input("Enter a number for your box:")
 n = int(n)  # remember to convert to int, since it will be a string
 
-n = 3
+n = 5  # This one works for 3 and 5 only
 for i in range(1, n+1):
     for j in range((2*i)-1, (2*n), 2):
         print(j, end=" ")
@@ -250,12 +250,37 @@ for i in range(1, n+1):
     print()
 
 
-n = 5
+n = 10
+i = 6
+print((3*(n-2)) + (2*(1-i))-1)
+
+n = 5  # This one only works for 5
 for i in range(1, n+1):
     for x in range(((3*(n-2)) + (2*(1-i))), (2*n), 2):
         print(x, end=" ")
     for y in range(((3 * (n - 2)) + (2 * (1 - i))) - 1):
         print(" ", end=" ")
+    # Need another nested loop that creates a floor for the range - going down by 2 related to i can produce low
+    # negative numbers. My pattern only works for 5
     for z in range((2*n)-1, ((3*(n-2)) + (2*(1-i)))-1, -2):
         print(z, end=" ")
+    print()
+
+"""
+Attempt to handle double digits
+"""
+
+n = 5
+for i in range(1, n+1):
+    for j in range((2*i)-1, (2*n), 2):
+        print(j, end=" ")
+    for k in range((2*i)-2):
+        if len(str(k)) >= 2:
+            for a in range(len(str(k))):
+                print(" ", end="")
+            print(" ", end=" ")
+        else:
+            print(" ", end=" ")
+    for l in range((2*n)-1, (2*i)-2, -2):
+        print(l, end=" ")
     print()
