@@ -250,9 +250,9 @@ for i in range(1, n+1):
     print()
 
 
-n = 10
-i = 6
-print((3*(n-2)) + (2*(1-i))-1)
+# n = 10
+# i = 6
+# print((3*(n-2)) + (2*(1-i))-1)
 
 n = 5  # This one only works for 5
 for i in range(1, n+1):
