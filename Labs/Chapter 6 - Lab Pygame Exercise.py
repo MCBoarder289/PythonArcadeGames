@@ -28,7 +28,7 @@ pygame.display.set_caption("My Game")
 # Variables to declare
 screen_width = size[0]
 screen_height = size[1]
-block_width = 10
+block_width = 5
 block_height = 5
 space_multiplier = 2
 
