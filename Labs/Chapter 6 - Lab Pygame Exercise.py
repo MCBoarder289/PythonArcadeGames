@@ -28,7 +28,9 @@ pygame.display.set_caption("My Game")
 # Variables to declare
 screen_width = size[0]
 screen_height = size[1]
-block_size = 5
+block_width = 10
+block_height = 5
+space_multiplier = 2
 
 # Loop until the user clicks the close button.
 done = False
@@ -55,11 +57,26 @@ while not done:
     screen.fill(BLACK)
 
     # --- Drawing code should go here
+    x_row_count = 0
+    y_row_count = 0
+    for i in range(0, screen_height, space_multiplier * block_height):
+        pygame.draw.rect(screen, GREEN, [x_row_count, i, block_width, block_height], 0)
+
+        for j in range(0, screen_width, space_multiplier * block_width):
+            pygame.draw.rect(screen, GREEN, [j, y_row_count, block_width, block_height], 0)
+
+        y_row_count += space_multiplier * block_height
+        x_row_count += space_multiplier * block_width
+
+    """"
     origin = [0, 0]
     for i in range(0, screen_width, block_size):
         pygame.draw.rect(screen, GREEN, [origin[0], origin[1], block_size, block_size], 0)
-        origin[0] += 2 * block_size
 
+        for j in range(0, screen_height, block_size):
+            pygame.draw.rect(screen, GREEN, [i, i, block_size, block_size], 0)
+            origin[1] += 2*block_size
+    """
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
