@@ -68,15 +68,6 @@ while not done:
         y_row_count += space_multiplier * block_height
         x_row_count += space_multiplier * block_width
 
-    """"
-    origin = [0, 0]
-    for i in range(0, screen_width, block_size):
-        pygame.draw.rect(screen, GREEN, [origin[0], origin[1], block_size, block_size], 0)
-
-        for j in range(0, screen_height, block_size):
-            pygame.draw.rect(screen, GREEN, [i, i, block_size, block_size], 0)
-            origin[1] += 2*block_size
-    """
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
 
