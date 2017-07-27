@@ -57,6 +57,11 @@ while not done:
     screen.fill(BLACK)
 
     # --- Drawing code should go here
+
+    # Drawing a Grid of rectangles
+    # At the beginning of the program, you need to enter in a block_width, block_height, space_multiplier
+    # and that will determine the look of the grid and its spaces between
+
     x_row_count = 0
     y_row_count = 0
     for i in range(0, screen_height, space_multiplier * block_height):
