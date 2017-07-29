@@ -24,11 +24,15 @@ BLACK = (0, 0, 0)
 TRUNK = (51, 5, 5)
 GREEN = (28, 51, 5)
 WHITE = (255, 255, 255)
+SNOW = (235, 240, 242)
 
 # Set the width and height of the screen
 
 size = (800, 600)
 screen = pygame.display.set_mode(size)
+
+screen_max_x = size[0] - 1  # 699 is max because 700 pixels starting at 0
+screen_max_y = size[1] - 1  # 499 is max because 500 pixels starting at 0
 
 # For Random Clouds, setting up random plots and forcing boundaries
 # cloud_num = random.randrange(1, 4) -- Will force 2 clouds, can't figure out naming 1...n variable names- SOLVED BELOW!
@@ -63,6 +67,13 @@ for i in range(25):
     right_trees["tree{0}".format(i)] = (random.randrange(trees_right_xlim, 805),
                                         random.randrange(trees_y_upperlim, trees_y_lowerlim))
 
+# Random Snowfall animation (from Chapter 8):
+
+snow_coordinates = []
+for i in range(50):
+    x = random.randrange(0, screen_max_x)
+    y = random.randrange(0, screen_max_y)
+    snow_coordinates.append([x, y])
 
 ''' # Taking out bad practice of numbered variables
 
@@ -195,6 +206,27 @@ while not done:
                              (v[0] + (22 * mult), v[1])], 0)
         pygame.draw.line(screen, LODGE_BASE, (((v[0] + v[0] + (22 * mult)) / 2), v[1]),
                          (((v[0] + v[0] + (22 * mult)) / 2), v[1] + (10 * mult)), int(10 * mult))
+
+    # Draw Snow --------------------------
+    # Placing this last to be in the foreground over the trees
+
+    """
+    # Original Snow loop -- uses item in list vs. index variable, so it works with a copy and doesn't modify list
+    
+     for coordinates in snow_coordinates:
+        coordinates[1] += 1
+        pygame.draw.circle(screen, SNOW, coordinates, 2)
+
+        if coordinates[1] > screen_max_y:
+            coordinates[1] = random.randrange(-20, -5)
+            coordinates[0] = random.randrange(screen_max_x)
+    """
+    for i in range(len(snow_coordinates)):
+        pygame.draw.circle(screen, SNOW, snow_coordinates[i], 2)
+        snow_coordinates[i][1] += 1
+        if snow_coordinates[i][1] > screen_max_y:
+            snow_coordinates[i][1] = random.randrange(-20, -5)  # reset it just above the top to simulate new falling
+            snow_coordinates[i][0] = random.randrange(screen_max_x)
 
     ''' # Latest Attempt to draw trees, trying to use dictionaries now
     x_offset = 0
