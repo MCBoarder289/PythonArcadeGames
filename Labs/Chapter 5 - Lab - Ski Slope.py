@@ -25,6 +25,7 @@ TRUNK = (51, 5, 5)
 GREEN = (28, 51, 5)
 WHITE = (255, 255, 255)
 SNOW = (235, 240, 242)
+BLUE = (0, 0, 255)
 
 # Set the width and height of the screen
 
@@ -74,6 +75,17 @@ for i in range(50):
     x = random.randrange(0, screen_max_x)
     y = random.randrange(0, screen_max_y)
     snow_coordinates.append([x, y])
+
+# Random People Coordinates:
+people_coordinates = []
+for i in range(6):
+    x = random.randrange(trees_left_xlim, trees_right_xlim)
+    y = random.randrange(trees_y_upperlim, trees_y_lowerlim)
+    people_coordinates.append([x, y])
+
+# People Vectors:
+people_change_x = 2
+people_change_y = 2
 
 ''' # Taking out bad practice of numbered variables
 
@@ -164,6 +176,44 @@ while not done:
     # Draw Lodge -------------------------
     pygame.draw.rect(screen, LODGE_BASE, [375, 210, 50, 30], 0)
     pygame.draw.polygon(screen, BLACK, [(375, 210), (400, 195), (425, 210)], 0)
+
+    # Draw People ------------------------ with animation
+    for i in range(len(people_coordinates)):
+        # Draw Head  -- Need to create variables for each of these once done drawing...
+        pygame.draw.circle(screen, BLACK, people_coordinates[i], 4)
+        # Draw Skis
+        pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
+                         [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
+        pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
+                         [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
+        # Draw Body
+        pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1]],
+                         [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16], 2)
+        # Draw Arms
+        pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 6, people_coordinates[i][1] + 7],
+                         [people_coordinates[i][0] + 5, people_coordinates[i][1] + 9], 2)
+        # Draw Legs
+        pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16],
+                         [people_coordinates[i][0] - 5, people_coordinates[i][1] + 18], 2)  # Left
+        pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16],
+                         [people_coordinates[i][0] + 5, people_coordinates[i][1] + 18], 2)  # Right
+
+        people_coordinates[i][1] += people_change_y
+        people_coordinates[i][0] += people_change_x
+
+        if people_coordinates[i][1] >= screen_max_y:  # Respawn at the top
+            people_coordinates[i][1] = random.randrange(trees_y_upperlim, trees_y_lowerlim)
+            people_coordinates[i][0] = random.randrange(trees_left_xlim, trees_right_xlim)
+
+        if people_coordinates[i][0] >= trees_right_xlim:  # Move back to the left
+            people_change_x *= -1
+
+        if people_coordinates[i][0] <= trees_left_xlim:  # Move back to the right
+            people_change_x *= -1
+
+        if people_coordinates[i][1] >= screen_max_y:  # Respawn at the top
+            people_coordinates[i][1] = random.randrange(trees_y_upperlim, trees_y_lowerlim)
+            people_coordinates[i][0] = random.randrange(trees_left_xlim, trees_right_xlim)
 
     # Draw Lift Lines --------------------
     pygame.draw.polygon(screen, BLACK, [(430, 600), (445, 210), (460, 210), (450, 600)], 2)
