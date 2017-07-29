@@ -81,7 +81,9 @@ people_coordinates = []
 for i in range(6):
     x = random.randrange(trees_left_xlim, trees_right_xlim)
     y = random.randrange(trees_y_upperlim, trees_y_lowerlim)
-    people_coordinates.append([x, y])
+    x_motion = 2
+    y_motion = 2
+    people_coordinates.append([x, y, x_motion, y_motion])
 
 # People Vectors:
 people_change_x = 2
@@ -180,18 +182,18 @@ while not done:
     # Draw People ------------------------ with animation
     for i in range(len(people_coordinates)):
         # Draw Head  -- Need to create variables for each of these once done drawing...
-        pygame.draw.circle(screen, BLACK, people_coordinates[i], 4)
-        if people_change_x > 0:  # Skis pointing to the right
+        pygame.draw.circle(screen, BLACK, [people_coordinates[i][0], people_coordinates[i][1]], 4)
+        if people_coordinates[i][2] < 0:  # Skis pointing to the right -- if the x_motion is positive
             # Draw Skis
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
                              [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
                              [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
-        else:  # Skis pointing to the left -- need to find out right coordinate to redraw skis
-            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
-                             [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
-            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
-                             [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
+        else:  # Skis pointing to the left -- if the x_motion is negative
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 10, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] - 3, people_coordinates[i][1] + 25], 2)  # Left
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 2, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] + 5, people_coordinates[i][1] + 25], 2)  # Right
         # Draw Body
         pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1]],
                          [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16], 2)
@@ -204,18 +206,18 @@ while not done:
         pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16],
                          [people_coordinates[i][0] + 5, people_coordinates[i][1] + 18], 2)  # Right
 
-        people_coordinates[i][1] += people_change_y
-        people_coordinates[i][0] += people_change_x
+        people_coordinates[i][1] += people_coordinates[i][3]  # Adding the y_motion to the coordinate
+        people_coordinates[i][0] += people_coordinates[i][2]  # Adding the x_motion to the coordinate
 
         if people_coordinates[i][1] >= screen_max_y:  # Respawn at the top
             people_coordinates[i][1] = random.randrange(trees_y_upperlim, trees_y_lowerlim)
             people_coordinates[i][0] = random.randrange(trees_left_xlim, trees_right_xlim)
 
-        if people_coordinates[i][0] >= trees_right_xlim:  # Move back to the left
-            people_change_x *= -1
+        if people_coordinates[i][0] >= trees_right_xlim:  # Move back to the left, changes the x_motion coordinate
+            people_coordinates[i][2] *= -1
 
-        if people_coordinates[i][0] <= trees_left_xlim:  # Move back to the right
-            people_change_x *= -1
+        if people_coordinates[i][0] <= trees_left_xlim:  # Move back to the right, changes the x_motion coordinate
+            people_coordinates[i][2] *= -1
 
         if people_coordinates[i][1] >= screen_max_y:  # Respawn at the top
             people_coordinates[i][1] = random.randrange(trees_y_upperlim, trees_y_lowerlim)
