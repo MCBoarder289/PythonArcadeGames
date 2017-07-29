@@ -82,12 +82,9 @@ for i in range(6):
     x = random.randrange(trees_left_xlim, trees_right_xlim)
     y = random.randrange(trees_y_upperlim, trees_y_lowerlim)
     x_motion = 2
-    y_motion = 2
+    y_motion = 1
     people_coordinates.append([x, y, x_motion, y_motion])
 
-# People Vectors:
-people_change_x = 2
-people_change_y = 2
 
 ''' # Taking out bad practice of numbered variables
 
@@ -181,15 +178,16 @@ while not done:
 
     # Draw People ------------------------ with animation
     for i in range(len(people_coordinates)):
+        # people_coordinates[x] -- 0 == x position, 1 == y position, 2 == x motion, 3 == y motion
         # Draw Head  -- Need to create variables for each of these once done drawing...
         pygame.draw.circle(screen, BLACK, [people_coordinates[i][0], people_coordinates[i][1]], 4)
-        if people_coordinates[i][2] < 0:  # Skis pointing to the right -- if the x_motion is positive
+        if people_coordinates[i][2] < 0:  # Skis pointing to the left -- if the x_motion is positive
             # Draw Skis
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
                              [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
                              [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
-        else:  # Skis pointing to the left -- if the x_motion is negative
+        else:  # Skis pointing to the right -- if the x_motion is negative
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 10, people_coordinates[i][1] + 15],
                              [people_coordinates[i][0] - 3, people_coordinates[i][1] + 25], 2)  # Left
             pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 2, people_coordinates[i][1] + 15],
