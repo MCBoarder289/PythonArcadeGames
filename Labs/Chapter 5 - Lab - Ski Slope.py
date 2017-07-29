@@ -181,11 +181,17 @@ while not done:
     for i in range(len(people_coordinates)):
         # Draw Head  -- Need to create variables for each of these once done drawing...
         pygame.draw.circle(screen, BLACK, people_coordinates[i], 4)
-        # Draw Skis
-        pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
-                         [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
-        pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
-                         [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
+        if people_change_x > 0:  # Skis pointing to the right
+            # Draw Skis
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
+        else:  # Skis pointing to the left -- need to find out right coordinate to redraw skis
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] - 3, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] - 10, people_coordinates[i][1] + 25], 2)  # Left
+            pygame.draw.line(screen, BLUE, [people_coordinates[i][0] + 5, people_coordinates[i][1] + 15],
+                             [people_coordinates[i][0] - 2, people_coordinates[i][1] + 25], 2)  # Right
         # Draw Body
         pygame.draw.line(screen, BLACK, [people_coordinates[i][0] - 1, people_coordinates[i][1]],
                          [people_coordinates[i][0] - 1, people_coordinates[i][1] + 16], 2)
