@@ -40,19 +40,30 @@ def draw_cloud(cloudname):
                                          70 + x_offset, 70 - y_offset], 0)
 
 
-def draw_tree(treename):  # THIS IS STILL BROKEN....
+def draw_tree(treename):
+    """
+    Draws trees from a specified names element in the dictionary of trees
+
+    Note that to get this working with different dictionary names (left tree vs right tree),
+    treename[0] = the name of the tree (ex: tree5) and treename[1] = the tuple of information (x, y, and multiplier)
+
+    :param treename:
+    :return:
+    """
     
     pygame.draw.polygon(screen, GREEN,
-                        [(treename[0], treename[1]), (treename[0], treename[1] - (6 * treename[2])),
-                         (treename[0] - (8 * treename[2]), treename[1] - (6 * treename[2])),
-                         (treename[0] + (6 * treename[2]), treename[1] - (36 * treename[2])),
-                         (treename[0] + (16 * treename[2]), treename[1] - (36 * treename[2])),
-                         (treename[0] + (30 * treename[2]), treename[1] - (6 * treename[2])),
-                         (treename[0] + (22 * treename[2]), treename[1] - (6 * treename[2])),
-                         (treename[0] + (22 * treename[2]), treename[1])], 0)
-    pygame.draw.line(screen, LODGE_BASE, (((treename[0] + treename[0] + (22 * treename[2])) / 2), treename[1]),
-                     (((treename[0] + treename[0] + (22 * treename[2])) / 2), treename[1] + (10 * treename[2])),
-                     int(10 * treename[2]))
+                        [(treename[1][0], treename[1][1]), (treename[1][0], treename[1][1] - (6 * treename[1][2])),
+                         (treename[1][0] - (8 * treename[1][2]), treename[1][1] - (6 * treename[1][2])),
+                         (treename[1][0] + (6 * treename[1][2]), treename[1][1] - (36 * treename[1][2])),
+                         (treename[1][0] + (16 * treename[1][2]), treename[1][1] - (36 * treename[1][2])),
+                         (treename[1][0] + (30 * treename[1][2]), treename[1][1] - (6 * treename[1][2])),
+                         (treename[1][0] + (22 * treename[1][2]), treename[1][1] - (6 * treename[1][2])),
+                         (treename[1][0] + (22 * treename[1][2]), treename[1][1])], 0)
+    pygame.draw.line(screen, LODGE_BASE, (((treename[1][0] + treename[1][0] + (22 * treename[1][2])) / 2),
+                                          treename[1][1]),
+                     (((treename[1][0] + treename[1][0] + (22 * treename[1][2])) / 2)
+                      , treename[1][1] + (10 * treename[1][2])),
+                     int(10 * treename[1][2]))
 
 
 # Defining my colors:
