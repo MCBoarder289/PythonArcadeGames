@@ -54,6 +54,13 @@ Pattern goes row by row:
 1 2
 3 4
 
+To run the script and keep it open, simply add to the end:
+plt.show(block=False)  # Seems to be optional, or if you fit something between 
+plt.show()
+
+reference: 
+# https://stackoverflow.com/questions/458209/is-there-a-way-to-detach-matplotlib-plots-so-that-the-computation-can-continue
+
 """
 plt.figure("Random Number Distributions", figsize=(10, 8))
 
@@ -110,3 +117,6 @@ plt.hist(bkwd_decay, bins=50)
 # Make the Layout Pretty
 plt.tight_layout()
 plt.subplots_adjust(hspace=1)
+
+# plt.show(block=False)
+plt.show()  # Keeps the window open to use once run
