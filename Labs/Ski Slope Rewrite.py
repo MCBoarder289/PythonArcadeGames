@@ -126,7 +126,7 @@ for i in range(25):
 
 # Random Snowfall animation (from Chapter 8):
 
-print(left_trees["tree0"][0])
+snow_speed = 0  # snow_speed is a counter, and in the snow loop we round the integer at certain pace
 
 snow_coordinates = []
 for i in range(50):
@@ -279,9 +279,15 @@ while not done:
             coordinates[1] = random.randrange(-20, -5)
             coordinates[0] = random.randrange(screen_max_x)
     """
+
+    if snow_speed >= 1:  # Sets the limit so that if we slow down with decimals, we don't infintely increase
+        snow_speed = 0  # Resetting the counter back to zero
+    snow_speed += 1  # This is the actual speed. Above 1 is faster, below down to 0 is frozen
+
     for i in range(len(snow_coordinates)):
         pygame.draw.circle(screen, SNOW, snow_coordinates[i], 2)
-        snow_coordinates[i][1] += 1
+        snow_coordinates[i][1] += round(snow_speed)
+
         if snow_coordinates[i][1] > screen_max_y:
             snow_coordinates[i][1] = random.randrange(-20, -5)  # reset it just above the top to simulate new falling
             snow_coordinates[i][0] = random.randrange(screen_max_x)
