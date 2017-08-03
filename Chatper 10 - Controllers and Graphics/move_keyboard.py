@@ -3,10 +3,12 @@ Sample Python/Pygame Programs
 Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
+
+How to move with the keyboard
 """
 
 import pygame
-
+test = 5
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

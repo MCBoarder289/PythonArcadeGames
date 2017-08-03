@@ -5,9 +5,11 @@ http://programarcadegames.com/
 http://simpson.edu/computer-science/
 
 Show everything we can pull off the joystick
+Display all of the options
 """
+# Updating for comments
 import pygame
-
+test = 5
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
