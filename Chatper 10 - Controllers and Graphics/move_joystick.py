@@ -8,7 +8,7 @@ How to move with a joystick/gamepad
 """
 
 import pygame
-test = 5
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
