@@ -64,7 +64,8 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-            # User pressed down on a key
+
+        # User pressed down on a key
 
         elif event.type == pygame.KEYDOWN:
             # Figure out if it was an arrow key. If so
