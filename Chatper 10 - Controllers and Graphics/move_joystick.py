@@ -80,8 +80,19 @@ while not done:
 
         # Move x according to the axis. We multiply by 10
         # to speed up the movement.
-        x_coord = x_coord + int(horiz_axis_pos * 10)
-        y_coord = y_coord + int(vert_axis_pos * 10)
+        if x_coord + int(horiz_axis_pos * 10) <= 0:
+            x_coord = 0
+        elif x_coord + int(horiz_axis_pos * 10) >= size[0]-14:
+            x_coord = size[0]-14
+        else:
+            x_coord = x_coord + int(horiz_axis_pos * 10)
+        # x_coord = x_coord + int(horiz_axis_pos * 10)
+        if y_coord + int(vert_axis_pos * 10) <= 0:
+            y_coord = 0
+        elif y_coord + int(vert_axis_pos * 10) >= size[1]-27:
+            y_coord = size[1]-27
+        else:
+            y_coord = y_coord + int(vert_axis_pos * 10)
 
     # ALL GAME LOGIC SHOULD GO ABOVE THIS COMMENT
 

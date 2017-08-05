@@ -91,15 +91,15 @@ while not done:
     # Move the object according to the speed vector.
     if x_coord + x_speed <= 0:
         x_coord = 0
-    elif x_coord + x_speed >= size[0]:
-        x_coord = size[0]
+    elif x_coord + x_speed >= size[0]-14:
+        x_coord = size[0]-14
     else:
         x_coord = x_coord + x_speed  # Original code, if statements to prevent going beyond screen added by me
 
     if y_coord + y_speed <= 0:
         y_coord = 0
-    elif y_coord + y_speed >= size[1]:
-        y_coord = size[1]
+    elif y_coord + y_speed >= size[1]-27:
+        y_coord = size[1]-27
     else:
         y_coord = y_coord + y_speed  # Original code, if statements to prevent going beyond screen added by me
 
