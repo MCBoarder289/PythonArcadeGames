@@ -241,9 +241,6 @@ while not done:
         if people_coordinates[i][0] <= trees_left_xlim:  # Move back to the right, changes the x_motion coordinate
             people_coordinates[i][2] *= -1
 
-        if people_coordinates[i][1] >= screen_max_y:  # Respawn at the top
-            people_coordinates[i][1] = random.randrange(trees_y_upperlim, trees_y_lowerlim)
-            people_coordinates[i][0] = random.randrange(trees_left_xlim, trees_right_xlim)
 
     # Draw Lift Lines --------------------
     pygame.draw.polygon(screen, BLACK, [(430, 600), (445, 210), (460, 210), (450, 600)], 2)
