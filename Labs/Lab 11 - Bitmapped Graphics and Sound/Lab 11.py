@@ -36,8 +36,7 @@ done = False
 clock = pygame.time.Clock()
 
 # Loading background image / sounds
-background_image = pygame.image.load("corona_up.png").convert()  # https://opengameart.org/content/ulukais-space-skyboxes
-background_image_reverse = pygame.image.load("corona_down.png").convert()  # https://opengameart.org/content/ulukais-space-skyboxes
+background_image = pygame.image.load("corona_stretch.png").convert()  # https://opengameart.org/content/ulukais-space-skyboxes
 
 player_left = pygame.image.load("shipsheetparts_player_left.png").convert()  # https://opengameart.org/content/space-ship-building-bits-volume-1
 player_left.set_colorkey(WHITE)
@@ -77,7 +76,7 @@ shoot_sound = pygame.mixer.Sound("laser5.ogg")
 
 # Background movement
 
-bg_speed = 0
+bg_speed = 1
 bg_x_position = 0
 
 # Hide the mouse cursor
@@ -158,14 +157,17 @@ while not done:
     # If you want a background image, replace this clear with blit'ing the
     # background image.
 
-    if bg_x_position <= -224:
-        bg_x_position = 0
-    if bg_speed >= 1:
-        bg_speed = 0
-    bg_speed += 1
+    # Scrolling Background code: https://www.youtube.com/watch?v=US3HSusUBeI
+
+    # Relative X is the modulus of x over the width of the background
+    rel_x = bg_x_position % background_image.get_rect().width
+    screen.blit(background_image, [rel_x - background_image.get_rect().width, 0])
+    if rel_x < size[1]:
+        screen.blit(background_image, [rel_x, 0])
+
     bg_x_position = bg_x_position - bg_speed
 
-    screen.blit(background_image, [bg_x_position, 0])
+    # screen.blit(background_image, [bg_x_position, 0])
 
     # Copy player image to screen:
     screen.blit(player_image, [player_x, player_y])
@@ -183,7 +185,7 @@ while not done:
     # --- Drawing code should go here
 
     # --- Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+    pygame.display.update()
 
     # --- Limit to 60 frames per second
     clock.tick(60)
