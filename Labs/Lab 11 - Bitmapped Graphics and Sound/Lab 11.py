@@ -59,7 +59,7 @@ y_speed = 0
 x = 0
 y = 0
 
-x_max = size[0] + 20
+x_max = size[0] + 20  # +20 is to render them off screen)
 y_max = size[1]
 
 asteroid_speed = 10
@@ -67,9 +67,9 @@ asteroid_speed = 10
 asteroid_coordinates = []
 
 for i in range(20):
-    x = x_max
-    y = random.randrange(5, y_max - 5)
-    z = random.randrange(2, 10)
+    x = x_max  # x coordinate of asteroid
+    y = random.randrange(5, y_max - 5)  # y coordinate of asteroid
+    z = random.randrange(2, 10)  # speed of asteroid
     asteroid_coordinates.append([x, y, z])
 
 shoot_sound = pygame.mixer.Sound("laser5.ogg")
