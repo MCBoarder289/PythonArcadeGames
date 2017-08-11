@@ -47,3 +47,51 @@ new_cat.color = "Orange"
 new_cat.weight = 8
 
 new_cat.meow()
+
+"""
+12.5.2 Review Questions
+
+    Should class names begin with an upper or lower case letter?
+    Should method names begin with an upper or lower case letter?
+    Should attribute names begin with an upper or lower case letter?
+    Which should be listed first in a class, attributes or methods?
+    What are other names for a reference?
+    What is another name for instance variable?
+    What is the name for an instance of a class?
+    Create a class called Star that will print out “A star is born!” every time it is created.
+    Create a class called Monster with attributes for health and a name. 
+    Add a constructor to the class that sets the health and name of the object with data passed in as parameters. 
+"""
+
+# Upper
+# lower
+# lower
+# attributes
+# attributes, fields
+# pointer
+
+
+class Star():
+
+    def __init__(self):
+        print("A star is born!")
+
+
+class Monster():
+
+    name = ""
+    health = 0
+
+    def __init__(self, name, health):
+        self.name = name
+        self.health = health
+
+    def decrease_health(self, number):
+        self.health -= number
+        if self.health <= 0:
+            print(self.name, "has died")
+
+
+spooky = Monster("Spooky", 5)
+
+print(spooky.health, spooky.name)
