@@ -1,2 +1,2 @@
 # PythonArcadeGames
-Working through exercises in coding game in Python at http://programarcadegames.com
+Working through exercises in coding games in Python at http://programarcadegames.com
